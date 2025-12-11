@@ -1,35 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Random Name Picker</title>
+    <title>Christmas Name Picker</title>
     <style>
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
-            background: #ffffff;
             margin: 0;
             padding: 0;
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            background: linear-gradient(to bottom right, #ff4d4d, #ffffff);
+            background: linear-gradient(to bottom right, #b30000, #006400);
+            background-attachment: fixed;
         }
 
         .container {
-            background: #ffffff;
+            background: rgba(255, 255, 255, 0.95);
             padding: 35px;
             width: 380px;
             border-radius: 15px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
             text-align: center;
-            border-top: 6px solid #d90429;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            border: 3px solid #d4af37; /* gold border */
+            position: relative;
+        }
+
+        .container:before {
+            content: "🎄";
+            font-size: 40px;
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         h2 {
-            color: #d90429;
+            color: #b30000;
             margin-bottom: 20px;
             font-size: 26px;
             letter-spacing: 1px;
+            text-shadow: 1px 1px 2px #ffd700;
         }
 
         label {
@@ -44,7 +55,7 @@
             width: 100%;
             padding: 12px;
             margin-top: 5px;
-            border: 2px solid #d90429;
+            border: 2px solid #b30000;
             border-radius: 8px;
             font-size: 15px;
             outline: none;
@@ -52,15 +63,15 @@
         }
 
         input[type=text]:focus {
-            border-color: #ff1e1e;
-            box-shadow: 0 0 5px rgba(255, 0, 0, 0.4);
+            border-color: #ff0000;
+            box-shadow: 0 0 8px rgba(255, 0, 0, 0.5);
         }
 
         button {
             margin-top: 20px;
             padding: 12px;
             width: 100%;
-            background: #d90429;
+            background: #b30000;
             color: white;
             border: none;
             border-radius: 8px;
@@ -68,11 +79,12 @@
             cursor: pointer;
             transition: 0.3s;
             font-weight: bold;
+            box-shadow: 0 4px 10px rgba(179, 0, 0, 0.4);
         }
 
         button:hover {
-            background: #ff1e1e;
-            transform: scale(1.03);
+            background: #ff0000;
+            transform: scale(1.05);
         }
 
         .msg {
@@ -82,27 +94,29 @@
             background: #ffe6e6;
             padding: 10px;
             border-radius: 8px;
+            border-left: 4px solid #b30000;
         }
 
         .result {
             margin-top: 20px;
             font-weight: bold;
-            color: #0f9d58;
+            color: #006400;
             background: #e6ffe6;
             padding: 10px;
             border-radius: 8px;
+            border-left: 4px solid #006400;
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h2>🎉 Random Name Picker</h2>
+    <h2>🎅 Christmas Name Picker 🎁</h2>
 
     <form method="POST">
         <label>Enter your name:</label>
         <input type="text" name="username" required>
-        <button type="submit">Draw</button>
+        <button type="submit">Pick My Name 🎄</button>
     </form>
 
     {% if message %}
