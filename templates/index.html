@@ -3,120 +3,177 @@
 <head>
     <title>Name Picker</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(to bottom right, #b30000, #006400);
-            background-attachment: fixed;
-        }
 
-        .container {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 35px;
-            width: 380px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-            border: 3px solid #d4af37; /* gold border */
-            position: relative;
-        }
+/* ❄️ Background: Arctic sky + your background image */
+body {
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-        .container:before {
-            content: "🎄";
-            font-size: 40px;
-            position: absolute;
-            top: -25px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
+    background:
+        linear-gradient(135deg, rgba(224,247,255,0.7), rgba(179,229,252,0.7), rgba(129,212,250,0.7)),
+        url('./Background_img_2.webp');
 
-        h2 {
-            color: #b30000;
-            margin-bottom: 20px;
-            font-size: 26px;
-            letter-spacing: 1px;
-            text-shadow: 1px 1px 2px #ffd700;
-        }
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 
-        label {
-            font-weight: bold;
-            color: #333;
-            display: block;
-            text-align: left;
-            margin-bottom: 5px;
-        }
+    overflow: hidden;
+    animation: skyPulse 8s ease-in-out infinite alternate;
+}
 
-        input[type=text] {
-            width: 100%;
-            padding: 12px;
-            margin-top: 5px;
-            border: 2px solid #b30000;
-            border-radius: 8px;
-            font-size: 15px;
-            outline: none;
-            transition: 0.3s;
-        }
+/* Soft breathing effect */
+@keyframes skyPulse {
+    0% { filter: brightness(1); }
+    100% { filter: brightness(1.15); }
+}
 
-        input[type=text]:focus {
-            border-color: #ff0000;
-            box-shadow: 0 0 8px rgba(255, 0, 0, 0.5);
-        }
+/* ❄️ Snowfall effect */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://i.imgur.com/9Q9ZQZC.png');
+    opacity: 0.25;
+    animation: snowDrift 20s linear infinite;
+    pointer-events: none;
+}
 
-        button {
-            margin-top: 20px;
-            padding: 12px;
-            width: 100%;
-            background: #b30000;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: 0.3s;
-            font-weight: bold;
-            box-shadow: 0 4px 10px rgba(179, 0, 0, 0.4);
-        }
+@keyframes snowDrift {
+    from { background-position: 0 0; }
+    to { background-position: 0 1000px; }
+}
 
-        button:hover {
-            background: #ff0000;
-            transform: scale(1.05);
-        }
+/* ❄️ Frosted glass container */
+.container {
+    background: rgba(255, 255, 255, 0.75);
+    padding: 40px;
+    width: 400px;
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.2);
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    position: relative;
+    animation: fadeIn 0.8s ease-out;
+}
 
-        .msg {
-            margin-top: 20px;
-            font-weight: bold;
-            color: #b30000;
-            background: #ffe6e6;
-            padding: 10px;
-            border-radius: 8px;
-            border-left: 4px solid #b30000;
-        }
+/* ❄️ Arctic icon */
+.container:before {
+    content: "❄️";
+    font-size: 48px;
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    filter: drop-shadow(0 3px 3px rgba(0,0,0,0.2));
+}
 
-        .result {
-            margin-top: 20px;
-            font-weight: bold;
-            color: #006400;
-            background: #e6ffe6;
-            padding: 10px;
-            border-radius: 8px;
-            border-left: 4px solid #006400;
-        }
+/* ❄️ Title */
+h2 {
+    color: #01579b;
+    margin-bottom: 25px;
+    font-size: 28px;
+    letter-spacing: 1px;
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+}
+
+/* ❄️ Labels */
+label {
+    font-weight: 600;
+    color: #024b74;
+    display: block;
+    text-align: left;
+    margin-bottom: 6px;
+    font-size: 14px;
+}
+
+/* ❄️ Input field */
+input[type=text] {
+    width: 100%;
+    padding: 14px;
+    margin-top: 5px;
+    border: 2px solid #0288d1;
+    border-radius: 10px;
+    font-size: 15px;
+    outline: none;
+    transition: 0.25s;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+input[type=text]:focus {
+    border-color: #03a9f4;
+    box-shadow: 0 0 10px rgba(3, 169, 244, 0.4);
+    transform: scale(1.02);
+}
+
+/* ❄️ Arctic button */
+button {
+    margin-top: 22px;
+    padding: 14px;
+    width: 100%;
+    background: linear-gradient(135deg, #0288d1, #03a9f4);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 17px;
+    cursor: pointer;
+    transition: 0.25s;
+    font-weight: 600;
+    box-shadow: 0 6px 15px rgba(2, 136, 209, 0.4);
+}
+
+button:hover {
+    background: linear-gradient(135deg, #03a9f4, #0288d1);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(2, 136, 209, 0.5);
+}
+
+/* ❄️ Messages */
+.msg, .result {
+    margin-top: 22px;
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: 600;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.msg {
+    color: #b71c1c;
+    background: #ffebee;
+    border-left: 5px solid #b71c1c;
+}
+
+.result {
+    color: #1b5e20;
+    background: #e8f5e9;
+    border-left: 5px solid #1b5e20;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h2>🎅 Name Name Picker 🎁</h2>
+    <h2>🎅 Name Picker 🎁</h2>
 
     <form method="POST">
         <label>Enter your name:</label>
         <input type="text" name="username" required>
-        <button type="submit">Pick a Name 🎄</button>
+        <button type="submit">Pick a Name ❄️</button>
     </form>
 
     {% if message %}
