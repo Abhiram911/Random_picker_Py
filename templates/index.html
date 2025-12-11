@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>🎅 Name Picker – Christmas Theme</title>
+  <title>🎅 Name Picker</title>
 
   <!-- Google Font -->
   <style>
@@ -75,7 +75,18 @@
     @keyframes glow { 0%,100% { box-shadow: 0 0 0px rgba(255,255,255,0.0) } 50% { box-shadow: 0 0 18px 6px currentColor } }
 
     /* Santa sleigh animation */
-    .santa { position: absolute; top: 12%; left: -20%; width: 240px; height: 120px; animation: fly 22s linear infinite; opacity: 0.9; filter: drop-shadow(0 6px 8px #0005); }
+    .santa {    position: absolute;
+    top: 10%;
+    left: -25%;
+    width: 260px;
+    height: auto;
+
+    animation: flySanta 18s ease-in-out infinite,
+               santaFloat 3.5s ease-in-out infinite;
+    opacity: 0.95;
+
+    filter: drop-shadow(0 8px 12px rgba(0,0,0,0.4));
+    transform-origin: center;}
     @keyframes fly {
       0%   { transform: translateX(0) translateY(0) scale(1) }
       40%  { transform: translateX(60vw) translateY(-5vh) scale(1.05) }
@@ -244,7 +255,7 @@
       <div class="card-body">
         <form method="POST">
           <label for="username">Enter your name:</label>
-          <input id="username" class="input" type="text" name="username" placeholder="e.g., Rohan" required />
+          <input id="username" class="input" type="text" name="username" placeholder="Enter the Name...." required />
           <button class="btn" type="submit">Pick a Name 🎄</button>
         </form>
 
@@ -260,7 +271,7 @@
   </div>
 
   <!-- Optional: audio toggle (hook up your audio URL if needed) -->
-  <button class="audio-toggle" id="audioToggle" aria-pressed="true" style="
+  <!--<button class="audio-toggle" id="audioToggle" aria-pressed="true" style="
       position: fixed; right: 16px; bottom: 16px; z-index: 20;
       background: var(--glass-strong); border: 1px solid rgba(255,255,255,0.25);
       backdrop-filter: blur(10px); border-radius: 999px; padding: 10px 14px;
@@ -271,8 +282,8 @@
       <path d="M14 10.5a4.5 4.5 0 010 3" stroke-width="2" />
       <path d="M14 7a8 8 0 010 10" stroke-width="2" />
     </svg>
-    <span id="audioLabel">Unmute</span>
-  </button>
+
+  </button>-->
   <audio id="bgm" loop muted>
     <!-- Set your festive track URL below (must be CORS-accessible if served from another domain) -->
     <!-- https://your-cdn.example/christmas.mp3 -->
