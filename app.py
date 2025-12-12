@@ -85,7 +85,7 @@ def index():
         # ✅ Already assigned?
         if emp_id in assigned:
             receiver_name = employees[assigned[emp_id]]
-            result = f"You have already drawn: {receiver_name}"
+            result = f"You have already drawn"
             return render_template("index.html", result=result)
 
         # ✅ Find available receivers

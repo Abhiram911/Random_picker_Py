@@ -1,40 +1,37 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>🎅 Name Picker</title>
+  <title>🎄 Cognizant × Comerica Christmas Celebration 🎅</title>
 
-  <!-- Google Font -->
   <style>
     :root{
       --bg1: #0b122e;
       --bg2: #18234e;
-      --accent: #e63946;     /* festive red */
-      --gold: #ffd166;       /* warm gold */
-      --mint: #06d6a0;       /* ornament green */
+      --accent: #e63946;
+      --gold: #ffd166;
+      --mint: #06d6a0;
       --white: #ffffff;
-      --glass: rgba(255,255,255,0.12);
-      --glass-strong: rgba(255,255,255,0.2);
       --shadow: rgba(0,0,0,0.35);
       --card-bg: rgba(255,255,255,0.88);
     }
+
     * { box-sizing: border-box }
     html, body { height: 100%; }
     body {
       margin: 0;
-      overflow: hidden; /* immersive scene */
-      font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      overflow: hidden;
+      font-family: 'Poppins', sans-serif;
       color: var(--white);
       background: linear-gradient(180deg, var(--bg1), var(--bg2));
     }
 
-    /* Parallax scene */
+    /* Parallax */
     .scene { position: fixed; inset: 0; perspective: 1000px; }
-    .layer { position: absolute; inset: 0; background-size: cover; background-position: center; will-change: transform; }
+    .layer { position: absolute; inset: 0; background-size: cover; background-position: center; }
 
-    /* Starry sky */
+    /* Stars */
     .stars::before, .stars::after {
       content: ""; position: absolute; inset: 0;
       background-image:
@@ -44,11 +41,10 @@
         radial-gradient(1.8px 1.8px at 85% 60%, #fff8, transparent 50%),
         radial-gradient(1.2px 1.2px at 15% 75%, #fff8, transparent 50%);
       animation: twinkle 6s linear infinite;
-      opacity: 0.8;
     }
     @keyframes twinkle { 0%,100%{ opacity:0.7 } 50%{ opacity:1 } }
 
-    /* Distant mountains silhouette */
+    /* Mountains */
     .mountains {
       background:
         radial-gradient(1000px 300px at 50% 80%, #0f1a3f 20%, transparent 60%),
@@ -58,200 +54,183 @@
       opacity: 0.7;
     }
 
-    /* Foreground snowy ground */
+    /* Snow ground */
     .snow-ground {
       background:
         linear-gradient(to top, rgba(255,255,255,0.25), transparent 50%),
         radial-gradient(1200px 300px at 50% 120%, #fff 45%, transparent 60%);
-      transform: translateZ(0);
     }
 
-    /* Garland lights across top */
-    .garland { position: absolute; top: 0; left: 0; width: 100%; height: 120px; pointer-events: none; }
-    .bulbs { position: absolute; top: 40px; left: 0; width: 100%; display: flex; justify-content: space-around; gap: 28px; transform: rotate(2deg); filter: drop-shadow(0 4px 6px var(--shadow)); }
-    .bulb { width: 18px; height: 28px; border-radius: 50% 50% 46% 46%; background: var(--gold); animation: glow 1.8s ease-in-out infinite; }
+    /* Garland */
+    .garland { position: absolute; top: 0; width: 100%; height: 120px; }
+    .bulbs { position: absolute; top: 40px; width: 100%; display: flex; justify-content: space-around; gap: 28px; }
+    .bulb { width: 18px; height: 28px; border-radius: 50%; animation: glow 1.8s infinite; }
     .bulb:nth-child(odd){ background: var(--mint) }
     .bulb:nth-child(3n){ background: var(--accent) }
-    @keyframes glow { 0%,100% { box-shadow: 0 0 0px rgba(255,255,255,0.0) } 50% { box-shadow: 0 0 18px 6px currentColor } }
+    .bulb:nth-child(2n){ background: var(--gold) }
+    @keyframes glow { 50% { box-shadow: 0 0 18px 6px currentColor } }
 
-    /* Santa sleigh animation */
-    .santa {    position: absolute;
-    top: 10%;
-    left: -25%;
-    width: 260px;
-    height: auto;
-
-    animation: flySanta 18s ease-in-out infinite,
-               santaFloat 3.5s ease-in-out infinite;
-    opacity: 0.95;
-
-    filter: drop-shadow(0 8px 12px rgba(0,0,0,0.4));
-    transform-origin: center;}
-    @keyframes fly {
-      0%   { transform: translateX(0) translateY(0) scale(1) }
-      40%  { transform: translateX(60vw) translateY(-5vh) scale(1.05) }
-      70%  { transform: translateX(110vw) translateY(3vh) scale(0.95) }
-      100% { transform: translateX(140vw) translateY(-2vh) scale(1) }
+    /* Santa */
+    .santa {
+      position: absolute;
+      top: 10%;
+      left: -25%;
+      width: 260px;
+      animation: flySanta 18s ease-in-out infinite, santaFloat 3.5s ease-in-out infinite;
+      filter: drop-shadow(0 8px 12px rgba(0,0,0,0.4));
     }
 
-    /* Snowfall canvas */
+    @keyframes flySanta {
+      0% { transform: translateX(0) translateY(0) scale(1) rotate(-2deg); opacity: 0; }
+      10% { opacity: 1; }
+      30% { transform: translateX(40vw) translateY(-6vh) scale(1.05) rotate(2deg); }
+      55% { transform: translateX(85vw) translateY(2vh) scale(0.98) rotate(-1deg); }
+      80% { transform: translateX(120vw) translateY(-3vh) scale(1.03) rotate(1deg); }
+      100% { transform: translateX(150vw) translateY(0) scale(1); opacity: 0; }
+    }
+
+    @keyframes santaFloat {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+
+    /* Snow Canvas */
     #snow { position: fixed; inset: 0; pointer-events: none; }
 
-    /* Centered container */
+    /* Card */
     .container { position: relative; z-index: 10; min-height: 100vh; display: grid; place-items: center; padding: 24px; }
 
-    /* Frosted glass card (your Name Picker) */
     .card {
       width: 100%; max-width: 440px;
       background: var(--card-bg);
       color: #291313;
-      border: 1px solid rgba(255,255,255,0.4);
-      backdrop-filter: blur(12px) saturate(130%);
       border-radius: 20px;
       box-shadow: 0 12px 40px var(--shadow);
-      overflow: hidden;
+      backdrop-filter: blur(12px);
       animation: fadeIn 0.8s ease-out;
     }
+
     .card-header {
       padding: 28px 28px 12px;
       display: flex; align-items: center; gap: 14px;
       border-bottom: 1px dashed rgba(0,0,0,0.12);
     }
-    .tree {
-      width: 42px; height: 42px; position: relative;
-      filter: drop-shadow(0 2px 4px #0002);
-      animation: treeGlow 2.4s ease-in-out infinite;
-    }
-    @keyframes treeGlow { 0%,100%{ filter: drop-shadow(0 2px 4px #0002) } 50%{ filter: drop-shadow(0 0 12px #0f8a5b) } }
+
     .title {
       font-family: 'Snowburst One', cursive;
-      font-size: 28px; letter-spacing: 0.6px;
+      font-size: 28px;
+      text-align: center;
+      width: 100%;
       color: #b30000;
-      text-shadow: 0 0 6px rgba(255, 215, 0, 0.65);
+      text-shadow: 0 0 6px rgba(255,215,0,0.65);
     }
 
     .card-body { padding: 22px 28px 24px; }
-    label {
-      font-weight: 600; color: #5a0000; display: block; text-align: left;
-      margin-bottom: 6px; font-size: 14px;
-    }
+
+    label { font-weight: 600; color: #5a0000; margin-bottom: 6px; }
+
     .input {
-      width: 100%; padding: 14px; margin-top: 5px;
-      border: 2px solid #b30000; border-radius: 10px; font-size: 15px; outline: none;
-      transition: 0.25s; background: rgba(255,255,255,0.95); color: #1a1a1a;
+      width: 100%; padding: 14px;
+      border: 2px solid #b30000; border-radius: 10px;
+      background: rgba(255,255,255,0.95);
+      transition: 0.25s;
     }
-    .input::placeholder { color: #8b0000aa; }
+
     .input:focus {
       border-color: #ff4d4d;
-      box-shadow: 0 0 10px rgba(255, 0, 0, 0.35);
+      box-shadow: 0 0 10px rgba(255,0,0,0.35);
       transform: scale(1.02);
     }
 
     .btn {
       margin-top: 18px; padding: 14px; width: 100%;
       background: linear-gradient(135deg, #b30000, #ff1a1a);
-      color: #fff; border: none; border-radius: 10px; font-size: 16.5px;
-      cursor: pointer; transition: 0.25s; font-weight: 700;
-      box-shadow: 0 6px 15px rgba(179, 0, 0, 0.4);
+      color: #fff; border: none; border-radius: 10px;
+      font-size: 16.5px; font-weight: 700;
+      cursor: pointer; transition: 0.25s;
+      box-shadow: 0 6px 15px rgba(179,0,0,0.4);
     }
+
     .btn:hover {
       background: linear-gradient(135deg, #ff1a1a, #b30000);
       transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(179, 0, 0, 0.5);
+      box-shadow: 0 10px 20px rgba(179,0,0,0.5);
     }
 
     .msg, .result {
-      margin-top: 18px; padding: 12px; border-radius: 10px; font-weight: 600;
+      margin-top: 18px; padding: 12px;
+      border-radius: 10px; font-weight: 600;
       animation: fadeIn 0.5s ease-out;
     }
-    .msg {
-      color: #b71c1c; background: #ffebee; border-left: 5px solid #b71c1c;
-    }
-    .result {
-      color: #1b5e20; background: #e8f5e9; border-left: 5px solid #1b5e20;
-    }
 
-    /* Decorative emoji above card */
+    .msg { background: #ffebee; color: #b71c1c; border-left: 5px solid #b71c1c; }
+    .result { background: #e8f5e9; color: #1b5e20; border-left: 5px solid #1b5e20; }
 
-    /* Fade-in animation */
     @keyframes fadeIn { from { opacity: 0; transform: translateY(20px) } to { opacity: 1; transform: translateY(0) } }
-
-    /* Responsive tweaks */
-    @media (max-width: 480px){
-      .title { font-size: 24px }
-      .card { max-width: 360px }
-    }
   </style>
 </head>
+
 <body>
 
   <!-- Parallax Scene -->
   <div class="scene">
-    <div class="layer stars" style="transform: translateZ(-300px) scale(1.3);"></div>
+    <div class="layer stars"></div>
     <div class="layer mountains"></div>
     <div class="layer snow-ground"></div>
+
+    <!-- Garland -->
     <div class="garland">
       <div class="bulbs">
-        <!-- Garland bulbs -->
-        <span class="bulb"></span><span class="bulb"></span><span class="bulb"></span><span class="bulb"></span><span class="bulb"></span>
-        <span class="bulb"></span><span class="bulb"></span><span class="bulb"></span><span class="bulb"></span><span class="bulb"></span>
-        <span class="bulb"></span><span class="bulb"></span><span class="bulb"></span><span class="bulb"></span><span class="bulb"></span>
-        <span class="bulb"></span><span class="bulb"></span><span class="bulb"></span><span class="bulb"></span><span class="bulb"></span>
-        <span class="bulb"></span><span class="bulb"></span><span class="bulb"></span><span class="bulb"></span><span class="bulb"></span>
-        <span class="bulb"></span><span class="bulb"></span><span class="bulb"></span><span class="bulb"></span><span class="bulb"></span>
+        <!-- 30 bulbs -->
+        <span class="bulb"></span><span class="bulb"></span><span class="bulb"></span>
+        <span class="bulb"></span><span class="bulb"></span><span class="bulb"></span>
+        <span class="bulb"></span><span class="bulb"></span><span class="bulb"></span>
+        <span class="bulb"></span><span class="bulb"></span><span class="bulb"></span>
+        <span class="bulb"></span><span class="bulb"></span><span class="bulb"></span>
+        <span class="bulb"></span><span class="bulb"></span><span class="bulb"></span>
+        <span class="bulb"></span><span class="bulb"></span><span class="bulb"></span>
+        <span class="bulb"></span><span class="bulb"></span><span class="bulb"></span>
+        <span class="bulb"></span><span class="bulb"></span><span class="bulb"></span>
       </div>
     </div>
 
-    <!-- Santa Sleigh SVG -->
-    <svg class="santa" viewBox="0 0 300 160" aria-hidden="true">
-      <!-- Sleigh -->
+    <!-- Santa -->
+    <svg class="santa" viewBox="0 0 300 160">
       <path d="M60 110 C80 100, 140 100, 160 110 L180 120 C200 130, 240 130, 260 120"
             fill="none" stroke="#b3252b" stroke-width="8" stroke-linecap="round" />
       <rect x="120" y="70" width="70" height="40" rx="8" fill="#b3252b" />
       <circle cx="185" cy="85" r="6" fill="#ffd166"></circle>
-      <!-- Reindeers -->
+
       <g fill="#8b5e3c">
         <ellipse cx="40" cy="90" rx="22" ry="12"></ellipse>
         <rect x="58" y="85" width="10" height="6" rx="2"></rect>
         <path d="M25 70 Q35 65, 40 70 Q45 65, 55 70" stroke="#cfa16e" stroke-width="3" fill="none" />
+
         <ellipse cx="0" cy="80" rx="22" ry="12"></ellipse>
         <rect x="18" y="75" width="10" height="6" rx="2"></rect>
         <path d="M-15 60 Q-5 55, 0 60 Q5 55, 15 60" stroke="#cfa16e" stroke-width="3" fill="none" />
       </g>
-      <!-- Rope -->
+
       <path d="M120 90 C90 95, 50 94, 20 92" stroke="#ffd166" stroke-width="3" fill="none" stroke-linecap="round"/>
     </svg>
   </div>
 
-  <!-- Snowfall Canvas -->
+  <!-- Snow Canvas -->
   <canvas id="snow"></canvas>
 
-  <!-- Name Picker Card -->
+  <!-- Card -->
   <div class="container">
-    <div class="card" role="form" aria-labelledby="title">
+    <div class="card">
       <div class="card-header">
-        <!-- Minimal CSS Tree -->
-        <svg class="tree" viewBox="0 0 64 64" aria-hidden="true">
-          <polygon points="32,8 20,24 44,24" fill="#0f8a5b"/>
-          <polygon points="32,18 16,36 48,36" fill="#0f8a5b"/>
-          <polygon points="32,30 12,50 52,50" fill="#0f8a5b"/>
-          <rect x="28" y="50" width="8" height="10" fill="#8b5e3c"/>
-          <circle cx="32" cy="12" r="3" fill="#ffd166"/>
-          <circle cx="24" cy="24" r="2" fill="#e63946"/>
-          <circle cx="40" cy="24" r="2" fill="#06d6a0"/>
-          <circle cx="18" cy="36" r="2" fill="#ffd166"/>
-          <circle cx="46" cy="36" r="2" fill="#e63946"/>
-          <circle cx="16" cy="48" r="2" fill="#06d6a0"/>
-          <circle cx="48" cy="48" r="2" fill="#ffd166"/>
-        </svg>
-        <h1 id="title" class="title">🎅 Name Picker 🎁</h1>
+        <h1 id="title" class="title">🎄 Cognizant - Comerica Christmas Celebration 🎅</h1>
       </div>
 
       <div class="card-body">
         <form method="POST">
-          <label for="username">Enter your name:</label>
-          <input id="username" class="input" type="text" name="username" placeholder="Enter the Name...." required />
-          <button class="btn" type="submit">Pick a Name 🎄</button>
+          <label for="username">Enter your Emp Id</label>
+          <input id="username" class="input" type="text" name="username" placeholder="Emp Id" required />
+          <button class="btn" type="submit">Find my Santa 🎅</button>
         </form>
 
         {% if message %}
@@ -265,27 +244,9 @@
     </div>
   </div>
 
-  <!-- Optional: audio toggle (hook up your audio URL if needed) -->
-  <!--<button class="audio-toggle" id="audioToggle" aria-pressed="true" style="
-      position: fixed; right: 16px; bottom: 16px; z-index: 20;
-      background: var(--glass-strong); border: 1px solid rgba(255,255,255,0.25);
-      backdrop-filter: blur(10px); border-radius: 999px; padding: 10px 14px;
-      display: inline-flex; align-items: center; gap: 8px; cursor: pointer;
-      box-shadow: 0 8px 24px var(--shadow); color: #fff; font-size: 14px;">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="18" height="18">
-      <path d="M3 10v4h4l5 5V5L7 10H3z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M14 10.5a4.5 4.5 0 010 3" stroke-width="2" />
-      <path d="M14 7a8 8 0 010 10" stroke-width="2" />
-    </svg>
-
-  </button>-->
-  <audio id="bgm" loop muted>
-    <!-- Set your festive track URL below (must be CORS-accessible if served from another domain) -->
-    <!-- https://your-cdn.example/christmas.mp3 -->
-  </audio>
-
+  <!-- Scripts -->
   <script>
-    // Parallax mouse movement
+    // Parallax
     (function(){
       const layers = document.querySelectorAll('.layer');
       const factor = [0.02, 0.04, 0.06];
@@ -293,13 +254,13 @@
         const x = (e.clientX / window.innerWidth) - 0.5;
         const y = (e.clientY / window.innerHeight) - 0.5;
         layers.forEach((layer, i) => {
-          const depth = i < factor.length ? factor[i] : 0.02;
+          const depth = factor[i] || 0.02;
           layer.style.transform = `translate3d(${x * depth * -60}px, ${y * depth * -40}px, 0)`;
         });
-      }, { passive: true });
+      });
     })();
 
-    // Snowfall on Canvas
+    // Snowfall
     (function(){
       const canvas = document.getElementById('snow');
       const ctx = canvas.getContext('2d');
@@ -316,6 +277,7 @@
           v: Math.random()*0.7 + 0.3
         }));
       }
+
       function draw(){
         ctx.clearRect(0,0,w,h);
         ctx.fillStyle = 'rgba(255,255,255,0.9)';
@@ -330,30 +292,33 @@
         }
         requestAnimationFrame(draw);
       }
+
       window.addEventListener('resize', resize);
-      resize(); draw();
+      resize(); 
+      draw();
     })();
 
-    // Audio toggle control (optional)
+    // Audio toggle (optional)
     (function(){
       const audio = document.getElementById('bgm');
       const btn = document.getElementById('audioToggle');
       const label = document.getElementById('audioLabel');
-      btn.addEventListener('click', () => {
-        audio.muted = !audio.muted;
-        label.textContent = audio.muted ? 'Unmute' : 'Mute';
-        btn.setAttribute('aria-pressed', audio.muted ? 'true' : 'false');
 
-        if(!audio.src){
-          // Assign your audio URL if needed
-          // audio.src = 'https://your-cdn.example/christmas.mp3';
-        }
-        if(!audio.paused && audio.muted){
-          audio.pause();
-        } else {
-          audio.play().catch(() => {});
-        }
-      });
+      if(btn){
+        btn.addEventListener('click', () => {
+          audio.muted = !audio.muted;
+          label.textContent = audio.muted ? 'Unmute' : 'Mute';
+          btn.setAttribute('aria-pressed', audio.muted ? 'true' : 'false');
+
+          if(!audio.paused && audio.muted){
+            audio.pause();
+          } else {
+            audio.play().catch(() => {});
+          }
+        });
+      }
     })();
   </script>
+
 </body>
+</html>
